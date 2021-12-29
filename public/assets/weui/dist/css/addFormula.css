@@ -1,0 +1,92 @@
+.formula_list {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.formula_list li {
+    position: relative;
+    overflow: hidden;
+    /*padding: 12px 0;*/
+    padding: 5px 0 20px 0;
+    border-bottom: 1px solid rgba(207, 207, 207, 0.95);
+}
+
+.formula_list li .item_left {
+    width: 50%;
+    float: left;
+    position: relative;
+    margin-top: 7px;
+    margin-left: 2%;
+}
+
+.formula_list li .item_left h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #333;
+    margin: 0;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.formula_list li .item_left span {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+.formula_list li .item_left div {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #f34347;
+    margin-top: 6px;
+    font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+}
+
+.formula_list li .item_left div i {
+    font-size: 0.6rem;
+    font-style: normal;
+}
+
+.formula_list li .item_left div b {
+    font-weight: initial;
+}
+
+.formula_list li .item_right {
+    width: 20%;
+    float: right;
+    position: relative;
+    margin-top: 7px;
+    margin-left: 2%;
+}
+
+.formula_list li .item_right .count_cont {
+    position: absolute;
+    /*bottom: 10px;*/
+    right: 4%;
+    top : 95%;
+    border: solid 1px #e6e6e6;
+    border-radius: 4px;
+    width: 120px;
+    overflow: hidden;
+    text-align: center;
+    line-height: 30px;
+}
+
+.formula_list li .item_right .count_cont i {
+    float: left;
+    /*width: 32%;*/
+    width: 20%;
+    color: #333;
+    font-style: normal;
+}
+
+.formula_list li .item_right .count_cont span {
+    float: left;
+   /* width: 33%;*/
+    width: 26%;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+    color: #333;
+}

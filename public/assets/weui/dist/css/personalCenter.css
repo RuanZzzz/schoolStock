@@ -1,0 +1,69 @@
+fieldset, img {
+    border: 0;
+}
+
+b, i, sav, em {
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+
+.user-site {
+    background: #fff;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+}
+
+.user-site .user-field {
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    position: relative;
+}
+
+.user-site .user-field b {
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.user-site .user-field * {
+    float: left;
+}
+
+.user-site .user-field b img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1rem 0 0 -1rem;
+}
+
+.user-site .user-field i {
+    width: calc(100% - 2.5rem);
+    width: -webkit-calc(100% - 2.5rem);
+    height: 2.5rem;
+}
+
+.user-site .user-field i p {
+    clear: both;
+    margin-top: 0.15rem;
+    font-size: 0.4rem;
+    padding: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.green {
+    color: #1aad19;
+    float: none!important;
+}

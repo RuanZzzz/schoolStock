@@ -1,0 +1,109 @@
+.left-tree {
+    position: absolute;
+    margin: 0px;
+    left: 0px;
+    right: auto;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    width: 195px;   /*原185px 190px*/
+    display: block;
+    visibility: visible;
+    background: #FFFFff;
+}
+
+/*展开、收缩按钮样式*/
+.left-toolbar-expend {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    font-size: 1px;
+    text-align: left;
+    overflow: hidden;
+    z-index: 2;
+    left: 195px;
+    cursor: pointer;
+    height: 100%;
+    width: 8px;
+    top:0;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-width: 0;
+}
+
+.left-toolbar-shrink {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    font-size: 1px;
+    text-align: left;
+    overflow: hidden;
+    z-index: 2;
+    left: 0px;
+    cursor: pointer;
+    height: 100%;
+    width: 8px;
+    top:0;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-width: 0;
+}
+
+
+/*按钮区域*/
+.ch-btn-are {
+    position: absolute;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 1px;
+    cursor: pointer;
+    z-index: 1;
+    visibility: visible;
+    height: 50px;
+    width: 8px;
+    /*top: 416px;*/
+    top: 45%;
+    left: 0px;
+    /*border-width: 1px 0;*/
+    border: 1px solid #eee;
+    background-color: #eee;
+}
+
+.ch-btn-are:hover {
+    background-color: #ffcc66;
+}
+/*展开、收缩按钮样式——结束*/
+
+.tree-body {
+    position: relative;
+    height: 863px;
+    visibility: visible;
+    overflow: auto;
+    width: 100%;
+    border: 0;
+    padding: 10px;
+}
+
+.zTree {
+    margin: 0;
+    padding: 5px;
+    color: #333;
+}
+
+.right-table {
+    margin: 0px;
+    left: 193px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    z-index: 0;
+    display: block;
+    visibility: visible;
+    overflow: auto;
+}

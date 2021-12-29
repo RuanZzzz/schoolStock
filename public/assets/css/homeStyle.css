@@ -1,0 +1,157 @@
+body {
+    font: 14px Arial, Helvetica, sans-serif;
+    color: #333;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+button, img, input {
+    outline: none;
+    border: 0;
+}
+
+body, button, img, input, p, ul {
+    padding: 0;
+    margin: 0;
+}
+
+body,p,ul,input,button,img {
+    padding: 0;
+    margin: 0;
+}
+
+.page-index {
+    width: 100%;
+}
+
+/*头部*/
+.page-index .page-banner {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.page-index .page-slider {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    z-index: -1;
+}
+
+.page-index .banner-text {
+    position: absolute;
+    top: 146px;
+    font-size: 60px;
+    letter-spacing: 8px;
+    font-weight: 600;
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-index .banner-descr-text {
+    position: absolute;
+    top: 234px;
+    font-size: 20px;
+    letter-spacing: 22px;
+    color: #fff;
+    white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-index .page-search {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 314px;
+}
+
+.graph-search {
+    /*width: 704px;*/
+    height: 54px;
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+}
+
+.graph-search-action {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5)
+}
+
+.graph-search-center {
+    width: 122px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border: 2px solid #c9c9c9;
+    float: left;
+    cursor: pointer;
+}
+
+/*身体——推荐*/
+.page-recom {
+    width: 1180px;
+}
+
+.page-index .page-recom {
+    margin: 0 auto;
+    padding: 85px 0 0;
+    overflow: hidden;
+}
+
+.page-recom-cont {
+    width: 1200px;
+}
+
+.page-recom-item {
+    width: 280px;
+}
+
+.page-index .page-recom-item {
+    height: 157px;
+    margin: 0 20px 20px 0;
+    float: left;
+    background-size: cover;
+    background-position: 50%;
+    position: relative;
+}
+
+.page-index .page-recom-item img {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0;
+}
+
+.page-index .page-recom-item .title {
+    position: absolute;
+    height: 40px;
+    line-height: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 0 0 20px;
+    color: #fff;
+    font-size: 18px;
+    background-repeat: no-repeat;
+    background-size: auto 60px;
+    /*background-color: hsla(0,0%,100%,.4);
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);*/
+    background: #000;
+    opacity: 0.6;
+}
+
+/*底部*/
+.page-index .page-footer {
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.page-index .page-footer a {
+    color: #333;
+    font-size: 14px;
+}

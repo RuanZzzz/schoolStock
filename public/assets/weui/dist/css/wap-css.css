@@ -1,0 +1,117 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+ul,li{	margin: 0;
+	padding: 0;
+	border: none;
+	list-style: none;}
+html,body{
+	width: 100%;
+	height: auto;
+	font-family: "microsoft yahei,微软雅黑 ";
+	background-color: #f3f4f6;
+}
+.containar{
+	width: 100%;
+	height: auto;
+	background-color: #f3f4f6;
+}
+.weui-grids:before{
+	right: 0;
+	height: 0px;
+	border-top: 0px solid #d9d9d9;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+}
+.weui-grid:before {
+	top: 0;
+	width: 0px;
+	border-right: 1px solid #f3f4f6;
+	-webkit-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+	-webkit-transform: scaleX(.5);
+	transform: scaleX(.5);
+}
+.weui-grid {
+	width: 25%;
+}
+.weui-grids{
+	padding: 10px 0px;
+	margin-top: -5px;
+}
+.weui-grid:after {
+	left: 0;
+	height: 0px;
+	border-bottom: 0px solid #d9d9d9;
+}
+.weui-grids:after {
+	width: 1px;
+	bottom: 0;
+	border-bottom: 1px solid #d9d9d9;
+	transform-origin: 0 0;
+	-webkit-transform: scaleX(.5);
+	transform: scaleX(.5);
+	background: #D9D9D9;
+}
+.weui-media-box:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	border-top: 1px solid #f3f4f6;
+	color: #f3f4f6;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	left: 15px;
+}
+.weui-media-box:after{
+
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 1px;
+	border-bottom: 1px solid #f3f4f6;
+	color: #f3f4f6;
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	left: 15px;
+
+}
+.weui-panel__ft .weui-cell_link:after{
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 1px;
+	border-bottom: 1px solid #f3f4f6;
+	color: #f3f4f6;
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	left: 15px;
+}
+.weui-grid__label{
+	color: #41444a;
+	/*	font-weight: bold;*/
+}
+.h-tittle{
+	color:#999;
+}
+.footer{
+	position: fixed!important;
+	/*height: 58px;*/
+	bottom: 0px;
+}
