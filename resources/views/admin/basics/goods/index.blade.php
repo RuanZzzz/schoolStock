@@ -69,6 +69,7 @@
                             <table class="table" style="margin-bottom: 0" >
                                 <thead>
                                 <tr>
+                                    <th>供货商</th>
                                     <th>名称</th>
                                     <th>单位</th>
                                     <th>单价</th>

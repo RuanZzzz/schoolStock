@@ -42,6 +42,13 @@
                         </div>
 
                         <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>供货商：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="company">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-right: 0">
                             <label class="col-sm-2 control-label" style="font-weight: 700">规格：</label>
                             <div class="col-sm-9">
                                 <input class="form-control" type="text" name="specification">

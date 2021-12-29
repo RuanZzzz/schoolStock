@@ -1,5 +1,6 @@
 @foreach($goodsList as $goods)
     <tr>
+        <td>{{$goods->company}}</td>
         <td>{{$goods->name}}</td>
         <td>{{$goods->unit}}</td>
         <td style="font-size: 15px;color: #ff0036;">{{$goods->price ? $goods->price . "￥" : ""}}</td>

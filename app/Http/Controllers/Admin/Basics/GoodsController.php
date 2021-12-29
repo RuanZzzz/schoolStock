@@ -72,6 +72,7 @@ class GoodsController extends Controller
     public function storeGoods(Request $request)
     {
         $goodsData['name'] = $request->get('name');
+        $goodsData['company'] = $request->get('company');
         $goodsData['specification'] = $request->get('specification');
         $goodsData['unit'] = $request->get('unit');
         $goodsData['cate'] = $request->get('cate');
@@ -84,6 +85,13 @@ class GoodsController extends Controller
             return [
                 'error' => 500,
                 'message' => '请填写物品名称！'
+            ];
+        }
+
+        if (empty($goodsData['company'])) {
+            return [
+                'error' => 500,
+                'message' => '请填写供货商名称！'
             ];
         }
 
@@ -109,7 +117,7 @@ class GoodsController extends Controller
         }
 
         // 判断是否有存在的物品
-        $existGoods = Goods::query()->where('name',$goodsData['name'])->where('specification',$goodsData['specification'])->get()->toArray();
+        $existGoods = Goods::query()->where('name',$goodsData['name'])->where('company',$goodsData['company'])->where('specification',$goodsData['specification'])->get()->toArray();
         if ($existGoods) {
             return [
                 'error' => 500,
@@ -123,9 +131,6 @@ class GoodsController extends Controller
             // 添加成功并在库存管理中生成对应库存信息
             Stock::query()->create([
                 'goods_id' => $storeResult->id,
-                'goods_name' => $goodsData['name'],
-                'goods_specification' => $goodsData['specification'],
-                'goods_unit' => $goodsData['unit'],
                 'created_at' => nowTime()
             ]);
 
