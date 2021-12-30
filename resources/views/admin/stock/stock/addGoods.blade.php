@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/hplus/css/resourceManage.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/hplus/css/categoryIndex.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/assets/web-layer/mobile/need/layer.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/assets/jedate/skin/jedate.css')}}">
 
 </head>
 
@@ -35,11 +36,23 @@
                     <form class="form-horizontal m" id="goodsForm">
 
                         <div class="form-group" style="margin-right: 0">
-                            <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>物品：</label>
-                            <div class="col-sm-9" id="cropCateSelect" style="cursor: pointer">
-                                <select id="goodsList" class="form-control" name="goods_id" style="width: 100%">
+                            <label class="col-sm-2 control-label" style="font-weight: 700">名称：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="name" style="background: none" disabled value="{{$goodsInfo->name}}">
+                            </div>
+                        </div>
 
-                                </select>
+                        <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label" style="font-weight: 700">供货商：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="company" style="background: none" disabled value="{{$goodsInfo->company}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label" style="font-weight: 700">单价：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" style="background: none;font-size: 20px;color: #ff0036;" disabled value="{{$goodsInfo->price}}">
                             </div>
                         </div>
 
@@ -47,6 +60,13 @@
                             <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>数量：</label>
                             <div class="col-sm-9">
                                 <input class="form-control" type="text" name="count">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>入库时间：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="record_time" id="importTime">
                             </div>
                         </div>
 
@@ -153,6 +173,11 @@
             })
         })
     })
+
+    // 日期选择器
+    jeDate("#importTime",{
+        format: "YYYY年MM月DD日"
+    });
 
 </script>
 

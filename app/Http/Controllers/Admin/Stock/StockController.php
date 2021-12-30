@@ -31,8 +31,9 @@ class StockController extends Controller
     {
         $pageSize = 10;
         $goodsName = $request->get('goodsName');
+        $company = $request->get('company');
 
-        $total = $stock->getTotalCount($goodsName);
+        $total = $stock->getTotalCount($company,$goodsName);
         $totalPages = $pagingHandler->getTotalPage($pageSize,$total);
 
         $data = [
@@ -56,12 +57,13 @@ class StockController extends Controller
         $pageSize = 10;
         $page = $request->get('pageNum');
         $goodsName = $request->get('goodsName');
+        $company = $request->get('company');
 
-        $total = $stock->getTotalCount($goodsName);
+        $total = $stock->getTotalCount($company,$goodsName);
         $totalPages = $pagingHandler->getTotalPage($pageSize,$total);
         $offset = $pagingHandler->getLimitPage($page,$pageSize,$totalPages);
 
-        $stockList = $stock->getList($goodsName,$offset,$pageSize);
+        $stockList = $stock->getList($company,$goodsName,$offset,$pageSize);
 
         $data = [
             'stockList' => $stockList
@@ -73,9 +75,16 @@ class StockController extends Controller
     /**
      * 物品入库页面
      */
-    public function addGoods()
+    public function addGoods(Request $request)
     {
-        return view('admin.stock.stock.addGoods');
+        $goodsId = $request->get('goodsId');
+        $goodsInfo = Goods::query()->find($goodsId);
+
+        $data = [
+            'goodsInfo' => $goodsInfo
+        ];
+
+        return view('admin.stock.stock.addGoods',$data);
     }
 
     /**

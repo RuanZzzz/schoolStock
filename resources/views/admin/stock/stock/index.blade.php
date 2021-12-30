@@ -38,10 +38,14 @@
                     <div class="select-list">
                         <ul>
                             <li>
-                                物品名称：<input type="text" id="cropCateName" style="width: 200px;">
+                                供货商：<input type="text" id="company" style="width: 200px;">
+                            </li>
+                            <li>
+                                物品名称：<input type="text" id="goodsName" style="width: 200px;">
                             </li>
                             <li>
                                 <a id="searchBtn" class="btn btn-primary btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a id="resetBtn" class="btn btn-warning btn-rounded btn-sm"><i class="fa fa-search"></i>&nbsp;重置</a>
                             </li>
                         </ul>
                     </div>
@@ -54,9 +58,6 @@
                         <div class="toolbar" style="padding: 15px 0 0 20px;">
                             <div class="tools-bars pull-left">
                                 <div class="btn-group-sm">
-                                    <a id="addGoods" class="btn btn-success">
-                                        <i class="fa fa-plus" style="font-style: normal;">物品入库</i>
-                                    </a>
                                     <a id="refreshBtn" class="btn btn-info" style="background-color: #23c6c8;border-color: #23c6c8;color: #FFFFFF;">
                                         <i class="fa fa-refresh"></i> 刷新
                                     </a>
@@ -69,6 +70,7 @@
                             <table class="table" style="margin-bottom: 0" >
                                 <thead>
                                 <tr>
+                                    <th>供货商</th>
                                     <th>物品名称</th>
                                     <th>单位</th>
                                     <th>库存</th>
@@ -121,11 +123,31 @@
 <script>
     var curPage = 1; // 当前页码
     var total,pageSize,totalPage; // 总记录数，每页显示数，总页数
+    var goodsName,company;  // 商品名称，供货商名称
 
     // 刷新表格事件
     $(document).on('click','#refreshBtn',function () {
         getStockData(1);
     });
+
+    // 搜索
+    $(document).on('click','#searchBtn',function (){
+        company = $("#company").val();
+        goodsName = $("#goodsName").val();
+
+        getStockData(1);
+    })
+
+    // 重置
+    $(document).on('click','#resetBtn',function () {
+        company = '';
+        goodsName = '';
+
+        $("#company").val("");
+        $("#goodsName").val("");
+
+        getStockData(1);
+    })
 
     function getStockData(page) {
         $.ajax({
@@ -134,6 +156,8 @@
             data : {
                 '_token' : $('meta[name="csrf-token"]').attr('content'),
                 'pageNum' : page,
+                'goodsName' : goodsName,
+                'company' : company
             },
             dataType : 'json',
             success : function (data) {
@@ -159,7 +183,9 @@
             type : 'get',
             data : {
                 'pageNum' : page,
-                '_token' : $('meta[name="csrf-token"]').attr('content')
+                '_token' : $('meta[name="csrf-token"]').attr('content'),
+                'goodsName' : goodsName,
+                'company' : company
             },
             success : function (data) {
                 $("#stockTable").html(data);
@@ -221,24 +247,24 @@
 
 {{-- crud的js --}}
 <script>
-    // 物品入库的弹出层
-    $(document).ready(function () {
-        $("#addGoods").click(function () {
-            layer.open({
-                type:2,
-                title:"物品入库",
-                skin:"myclass",
-                area:["85%","96%"],
-                offset: '10px',
-                maxmin: true, //开启最大化最小化按钮
-                fix:true,
-                content:'/admin/stock/addGoods'
-                /*end:function () {
-                    getPesticideData(1);
-                }*/
-            });
-        })
-    });
+    // 物品入库
+    $(document).on('click','#importBtn',function () {
+        var goodsId = $(this).attr("data-id");
+
+        layer.open({
+            type:2,
+            title:"物品入库",
+            skin:"myclass",
+            area:["85%","96%"],
+            offset: '10px',
+            maxmin: true, //开启最大化最小化按钮
+            fix:true,
+            content:'/admin/stock/addGoods?goodsId=' + goodsId
+            /*end:function () {
+                getPesticideData(1);
+            }*/
+        });
+    })
 
    // 出库js
     $(document).on('click','#checkoutBtn',function (){
