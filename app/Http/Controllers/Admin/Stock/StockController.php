@@ -195,7 +195,6 @@ class StockController extends Controller
         ]);
 
         if ($updateStock) {
-            $goodsName = empty($goodsInfo['specification']) ? $goodsInfo['name'] : $goodsInfo['name'] . '(' . $goodsInfo['specification'] .')';
             // 出库记录存储
             Record::query()->create([
                 'goods_id' => $goodsInfo['id'],
