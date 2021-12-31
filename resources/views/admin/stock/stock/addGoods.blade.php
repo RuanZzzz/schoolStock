@@ -36,16 +36,16 @@
                     <form class="form-horizontal m" id="goodsForm">
 
                         <div class="form-group" style="margin-right: 0">
-                            <label class="col-sm-2 control-label" style="font-weight: 700">名称：</label>
+                            <label class="col-sm-2 control-label" style="font-weight: 700">供货商：</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="name" style="background: none" disabled value="{{$goodsInfo->name}}">
+                                <input class="form-control" type="text" name="company" style="background: none" disabled value="{{$goodsInfo->company}}">
                             </div>
                         </div>
 
                         <div class="form-group" style="margin-right: 0">
-                            <label class="col-sm-2 control-label" style="font-weight: 700">供货商：</label>
+                            <label class="col-sm-2 control-label" style="font-weight: 700">物品：</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="company" style="background: none" disabled value="{{$goodsInfo->company}}">
+                                <input class="form-control" type="text" name="name" style="background: none" disabled value="{{$goodsInfo->name}}">
                             </div>
                         </div>
 
@@ -66,9 +66,11 @@
                         <div class="form-group" style="margin-right: 0">
                             <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>入库时间：</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="record_time" id="importTime">
+                                <input class="form-control" type="text" name="recordTime" id="importTime">
                             </div>
                         </div>
+
+                        <input value="{{$goodsInfo->id}}" type="hidden" name="goodsId">
 
                     </form>
                 </div>

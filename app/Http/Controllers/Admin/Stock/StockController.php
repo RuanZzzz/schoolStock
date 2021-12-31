@@ -92,7 +92,7 @@ class StockController extends Controller
      */
     public function storeGoods(Request $request)
     {
-        $goodsId = $request->get('goods_id');
+        $goodsId = $request->get('goodsId');
         $goodsInfo = Goods::query()->find($goodsId);
 
         // 数量非空判断
@@ -118,10 +118,8 @@ class StockController extends Controller
             // 入库成功后，需要记录一下操作记录
             Record::query()->create([
                 'goods_id' => $goodsInfo['id'],
-                'goods_name' => $goodsName,
                 'goods_count' => $request->get('count'),    // 每次入库的数量
-                'goods_unit' => $goodsInfo['unit'],
-                'goods_cate' => $goodsInfo['cate'],
+                'record_time' => $request->get('recordTime'),
                 'created_at' => nowTime(),
                 'opera_type' => '入库',
                 'record_name' => '谢彩云'
@@ -141,9 +139,11 @@ class StockController extends Controller
     {
         $checkoutId = $request->get('checkoutId');
         $stockInfo = Stock::query()->find($checkoutId);
+        $goodsInfo = Goods::query()->find($stockInfo->goods_id);
 
         $data = [
-            'stockInfo' => $stockInfo
+            'stockInfo' => $stockInfo,
+            'goodsInfo' => $goodsInfo
         ];
 
         return view('admin.stock.stock.checkout',$data);
@@ -199,12 +199,10 @@ class StockController extends Controller
             // 出库记录存储
             Record::query()->create([
                 'goods_id' => $goodsInfo['id'],
-                'goods_name' => $goodsName,
                 'goods_count' => $outCount,    // 每次出库的数量
-                'goods_unit' => $goodsInfo['unit'],
                 'goods_price' => $goodsInfo['price'],
                 'goods_total_price' => $outCount * $goodsInfo['price'],
-                'goods_cate' => $goodsInfo['cate'] ,
+                'record_time' => $request->get('recordTime'),
                 'created_at' => nowTime(),
                 'opera_type' => '出库',
                 'record_name' => $request->get('record_name'),

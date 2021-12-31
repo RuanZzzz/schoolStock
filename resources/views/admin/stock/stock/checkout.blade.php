@@ -36,9 +36,16 @@
                     <form class="form-horizontal m" id="stockForm">
 
                         <div class="form-group" style="margin-right: 0">
-                            <label class="col-sm-2 control-label is-require" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>物品：</label>
+                            <label class="col-sm-2 control-label" style="font-weight: 700">供货商：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="company" style="background: none" disabled value="{{$goodsInfo->company}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label is-require" style="font-weight: 700">物品：</label>
                             <div class="col-sm-9" id="cropCateSelect" style="cursor: pointer">
-                                <input class="form-control" type="text" style="background: none" disabled value="{{empty($stockInfo->goods_specification) ? "" : $stockInfo->goods_name."(".$stockInfo->goods_specification.")"}}">
+                                <input class="form-control" type="text" style="background: none" disabled value="{{empty($goodsInfo->specification) ? $goodsInfo->name : $goodsInfo->name."(".$goodsInfo->specification.")"}}">
 
                             </div>
                         </div>
@@ -56,6 +63,13 @@
                             <div class="col-sm-9" id="cropCateSelect" style="cursor: pointer">
                                 <input class="form-control" type="text" style="background: none" name="record_name" placeholder="请填写取件人名称">
 
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-right: 0">
+                            <label class="col-sm-2 control-label" style="font-weight: 700"><span style="color: red;margin-right: 3px">*</span>出库时间：</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="recordTime" id="exportTime">
                             </div>
                         </div>
 
@@ -128,6 +142,11 @@
 
         })
     })
+
+    // 日期选择器
+    jeDate("#exportTime",{
+        format: "YYYY年MM月DD日"
+    });
 </script>
 
 </body>
