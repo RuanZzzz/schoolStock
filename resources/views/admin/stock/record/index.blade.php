@@ -90,7 +90,8 @@
                             <table class="table" style="margin-bottom: 0" >
                                 <thead>
                                 <tr>
-                                    <th>物品名称</th>
+                                    <th>供货商</th>
+                                    <th>物品</th>
                                     <th>数量</th>
                                     <th>单位</th>
                                     <th>单价</th>
