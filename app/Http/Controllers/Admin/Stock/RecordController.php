@@ -13,14 +13,10 @@ class RecordController extends Controller
 
     public function index()
     {
-        $recordTime = Record::query()->orderBy('created_at','desc')->distinct()->get()->toArray();
-        $res = [];
-        foreach ($recordTime as $k => $val) {
-            $res[$k] = date("Y-m-d",strtotime($val['created_at']));
-        }
+        $recordTime = Record::query()->orderBy('record_time','desc')->distinct()->get()->toArray();
 
         $data = [
-            'recordTime' => array_unique($res)
+            'recordTime' => $recordTime
         ];
 
         return view('admin.stock.record.index',$data);
@@ -39,8 +35,9 @@ class RecordController extends Controller
         $recordName = $request->get('recordName');
         $operaType = $request->get('type');
         $time = $request->get('time');
+        $company = $request->get('company');
 
-        $total = $record->getTotalCount($goodsName,$recordName,$operaType,$time);
+        $total = $record->getTotalCount($company,$goodsName,$recordName,$operaType,$time);
         $totalPages = $pagingHandler->getTotalPage($pageSize,$total);
 
         $data = [
@@ -66,12 +63,13 @@ class RecordController extends Controller
         $recordName = $request->get('recordName');
         $operaType = $request->get('type');
         $time = $request->get('time');
+        $company = $request->get('company');
 
-        $total = $record->getTotalCount($goodsName,$recordName,$operaType,$time);
+        $total = $record->getTotalCount($company,$goodsName,$recordName,$operaType,$time);
         $totalPages = $pagingHandler->getTotalPage($pageSize,$total);
         $offset = $pagingHandler->getLimitPage($page,$pageSize,$totalPages);
 
-        $recordList = $record->getList($goodsName,$recordName,$operaType,$time,$offset,$pageSize);
+        $recordList = $record->getList($company,$goodsName,$recordName,$operaType,$time,$offset,$pageSize);
 
         $data = [
             'recordList' => $recordList
@@ -90,36 +88,41 @@ class RecordController extends Controller
         $recordName = $request->get('recordName');
         $operaType = $request->get('type');
         $time = $request->get('time');
+        $company = $request->get('company');
 
-        $recordList = $record->exportList($goodsName,$recordName,$operaType,$time);
+        $recordList = $record->exportList($company,$goodsName,$recordName,$operaType,$time);
 
         $exportData = [];
         foreach ($recordList as $k => $val) {
             $exportData[$k]['sort'] = $k + 1;
+            $exportData[$k]['company'] = $val['company'];
             $exportData[$k]['goodsName'] = $val['goods_name'];
             $exportData[$k]['goodsCount'] = $val['goods_count'];
             $exportData[$k]['goodsUnit'] = $val['goods_unit'];
             $exportData[$k]['goodsPrice'] = empty($val['goods_price']) ? '' : $val['goods_price'];
             $exportData[$k]['goodsTotalPrice'] = empty($val['goods_total_price']) ? '' : $val['goods_total_price'];
             $exportData[$k]['goodsCate'] = $val['goods_cate'];
-            $exportData[$k]['time'] = date("Y-m-d",strtotime($val['created_at']));
+            $exportData[$k]['opeType'] = $val['opera_type'];
+            $exportData[$k]['time'] = $val['record_time'];
             $exportData[$k]['recordName'] = $val['record_name'];
             $exportData[$k]['remark'] = $val['remark'];
         }
 
-        $head = ['序号','物品名称','数量','单位','单价','金额','商品类型','时间','签名','备注'];
+        $head = ['序号','供货商','物品名称','数量','单位','单价','金额','商品类型','动作','时间','签名','备注'];
 
         $keys = [
             0 => 'sort',
-            1 => 'goodsName',
-            2 => 'goodsCount',
-            3 => 'goodsUnit',
-            4 => 'goodsPrice',
-            5 => 'goodsTotalPrice',
-            6 => 'goodsCate',
-            7 => 'time',
-            8 => 'recordName',
-            9 => 'remark'
+            1 => 'company',
+            2 => 'goodsName',
+            3 => 'goodsCount',
+            4 => 'goodsUnit',
+            5 => 'goodsPrice',
+            6 => 'goodsTotalPrice',
+            7 => 'goodsCate',
+            8 => 'opeType',
+            9 => 'time',
+            10 => 'recordName',
+            11 => 'remark'
         ];
 
         // 文件名

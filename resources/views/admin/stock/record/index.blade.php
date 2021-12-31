@@ -38,7 +38,10 @@
                     <div class="select-list">
                         <ul>
                             <li>
-                                物品名称：<input type="text" id="goodsName" style="width: 200px;">
+                                供货商：<input type="text" id="company" style="width: 200px;">
+                            </li>
+                            <li>
+                                物品：<input type="text" id="goodsName" style="width: 200px;">
                             </li>
                             <li>
                                 姓名：<input type="text" id="recordName" style="width: 200px;">
@@ -56,7 +59,7 @@
                                 <select id="timeList"  style="width: 200px">
                                     <option>所有时间</option>
                                     @foreach($recordTime as $time)
-                                        <option value="{{$time}}">{{$time}}</option>
+                                        <option value="{{$time['record_time']}}">{{$time['record_time']}}</option>
                                     @endforeach
                                 </select>
                             </li>
@@ -99,7 +102,7 @@
                                     <th>商品类别</th>
                                     <th>时间</th>
                                     <th>签名</th>
-                                    <th>操作</th>
+                                    <th>动作</th>
                                     <th>备注</th>
                                 </tr>
                                 </thead>
@@ -147,7 +150,7 @@
 <script>
     var curPage = 1; // 当前页码
     var total,pageSize,totalPage; // 总记录数，每页显示数，总页数
-    var goodsName,recordName,operaType,time;  // 物品名称，操作人员名称
+    var company,goodsName,recordName,operaType,time;  // 物品名称，操作人员名称
 
     // 刷新表格事件
     $(document).on('click','#refreshBtn',function () {
@@ -159,6 +162,7 @@
         var curType = $("#operaTypeList").find("option:selected").text();
         var curTime = $("#timeList").find("option:selected").text();
 
+        company = $("#company").val();
         goodsName = $("#goodsName").val();
         recordName = $("#recordName").val();
         operaType = curType === '所有操作类型' ? '' : curType;
@@ -173,11 +177,13 @@
         recordName = '';
         operaType = '';
         time = '';
+        company = '';
 
         $("#timeList").val("").trigger("change");
         $("#operaTypeList").val("").trigger("change");
         $("#goodsName").val("");
         $("#recordName").val("");
+        $("#company").val("");
 
         getRecordData(1);
     })
@@ -192,7 +198,8 @@
                 'goodsName' : goodsName,
                 'recordName' : recordName,
                 'type' : operaType,
-                'time' : time
+                'time' : time,
+                'company' : company
             },
             dataType : 'json',
             success : function (data) {
@@ -222,7 +229,8 @@
                 'goodsName' : goodsName,
                 'recordName' : recordName,
                 'type' : operaType,
-                'time' : time
+                'time' : time,
+                'company' : company
             },
             success : function (data) {
                 $("#recordTable").html(data);
