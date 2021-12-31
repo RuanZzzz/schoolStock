@@ -103,6 +103,14 @@ class StockController extends Controller
             ];
         }
 
+        // 入库时间非空判断
+        if (empty($request->get('recordTime'))) {
+            return [
+                'error' => 500,
+                'message' => '请填写入库时间！'
+            ];
+        }
+
         // 原本库里的数量
         $oldCount = Stock::query()->where('goods_id',$goodsId)->value('count');
         $newCount = $request->get('count') + $oldCount;
@@ -162,6 +170,14 @@ class StockController extends Controller
             return [
                 'error' => 500,
                 'message' => '请输入出库的数量'
+            ];
+        }
+
+        // 出库时间非空判断
+        if (empty($request->get('recordTime'))) {
+            return [
+                'error' => 500,
+                'message' => '请填出库时间！'
             ];
         }
 
