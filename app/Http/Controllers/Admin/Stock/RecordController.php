@@ -13,7 +13,7 @@ class RecordController extends Controller
 
     public function index()
     {
-        $recordTime = Record::query()->orderBy('record_time','desc')->distinct()->get()->toArray();
+        $recordTime = Record::query()->select('record_time')->orderBy('record_time','desc')->distinct()->get()->toArray();
 
         $data = [
             'recordTime' => $recordTime
