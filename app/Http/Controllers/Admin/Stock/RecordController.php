@@ -138,4 +138,27 @@ class RecordController extends Controller
         ];
     }
 
+    /**
+     * 删除记录
+     */
+    public function deleteRecord(Request $request)
+    {
+        $deleteId = $request->get('deleteId');
+
+        $delRecord = Record::query()->find($deleteId)->delete();
+        if ($delRecord) {
+            $data = [
+                'error' => 200,
+                'message' => '删除成功！'
+            ];
+        }else {
+            $data = [
+                'error' => 500,
+                'message' => '删除失败！'
+            ];
+        }
+
+        return $data;
+    }
+
 }

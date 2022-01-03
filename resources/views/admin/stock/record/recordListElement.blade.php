@@ -11,5 +11,6 @@
         <td>{{$record->record_name}}</td>
         <td>{{$record->opera_type}}</td>
         <td>{{$record->remark}}</td>
+        <td><a id="delBtn" class="btn btn-danger btn-xs" data-id="{{$record->id}}" ><i class="fa fa-remove"></i>删除</a></td>
     </tr>
 @endforeach

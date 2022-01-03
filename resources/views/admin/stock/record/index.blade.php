@@ -104,6 +104,7 @@
                                     <th>签名</th>
                                     <th>动作</th>
                                     <th>备注</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody id="recordTable">
@@ -327,6 +328,36 @@
                 }
             }
         })
+
+    });
+
+    // 删除数据
+    $(document).on('click','#delBtn',function () {
+        var deleteId = $(this).attr("data-id");
+        console.log(deleteId);
+
+        layer.confirm('您确定要删除该物品吗？',{
+            btn:['确定','取消']
+        },function () {
+
+            $.ajax({
+                url : '/admin/record/deleteRecord',
+                type : 'post',
+                data : {
+                    'deleteId' : deleteId,
+                    '_token' : $('meta[name="csrf-token"]').attr('content')
+                },
+                success : function (data) {
+                    if(data.error == 200){
+                        layer.msg(data.message,{icon: 6});
+                        var currentPage = $("#recordTablePager .active").attr("rel");
+                        getRecordData(currentPage);
+                    }else {
+                        layer.msg(data.message,{icon: 5});
+                    }
+                }
+            });
+        });
 
     });
 

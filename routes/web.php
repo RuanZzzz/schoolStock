@@ -43,3 +43,4 @@ Route::get('admin/record/index','Admin\Stock\RecordController@index');
 Route::get('admin/record/getCount','Admin\Stock\RecordController@getCount');
 Route::get('admin/record/getElement','Admin\Stock\RecordController@getElement');
 Route::post('admin/record/exportExcel','Admin\Stock\RecordController@exportExcel');
+Route::post('admin/record/deleteRecord','Admin\Stock\RecordController@deleteRecord');
