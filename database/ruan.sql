@@ -58,5 +58,12 @@ alter table school_stock.record
     add primary key (id);
 
 
-
-
+-- 项目图片（用于存放GitHub的图片）
+CREATE TABLE `project_img` (
+   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '图片名称',
+   `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '图片地址',
+   `cate_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '所属分类（不同项目的图片）',
+   `created_at` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '创建时间',
+   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

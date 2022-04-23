@@ -44,3 +44,11 @@ Route::get('admin/record/getCount','Admin\Stock\RecordController@getCount');
 Route::get('admin/record/getElement','Admin\Stock\RecordController@getElement');
 Route::post('admin/record/exportExcel','Admin\Stock\RecordController@exportExcel');
 Route::post('admin/record/deleteRecord','Admin\Stock\RecordController@deleteRecord');
+
+// 项目图片
+Route::get('admin/projectImg/index','Admin\Basics\ProjectImgController@index');
+Route::get('admin/projectImg/getCount','Admin\Basics\ProjectImgController@getCount');
+Route::get('admin/projectImg/getElement','Admin\Basics\ProjectImgController@getElement');
+Route::get('admin/projectImg/addImg','Admin\Basics\ProjectImgController@addImg');
+Route::post('admin/projectImg/storeImg','Admin\Basics\ProjectImgController@storeImg');
+Route::post('admin/projectImg/uploadProjectImg','Admin\Basics\ProjectImgController@uploadProjectImg');

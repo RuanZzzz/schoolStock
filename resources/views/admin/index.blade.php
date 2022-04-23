@@ -53,6 +53,9 @@
                         <li>
                             <a class="J_menuItem" href="{{url('admin/goods/index')}}" data-index="0">物品信息</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="{{url('admin/projectImg/index')}}" data-index="0">项目图片信息</a>
+                        </li>
                     </ul>
                 </li>
 
